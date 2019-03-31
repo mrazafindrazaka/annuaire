@@ -24,7 +24,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<li class="nav-item"><a class="nav-link" href="<?= base_url("member/login") ?>">Connexion</a></li>
 					<?php } else { ?>
 						<?php if (get_cookie('mode') == 1) { ?>
-							<li class="nav-item"><a class="nav-link" href="<?= base_url("member/create") ?>">Créer</a></li>
+							<li class="nav-item"><a class="nav-link" href="<?= base_url("member/create") ?>">Administration</a></li>
 						<?php } ?>
 						<li class="nav-item"><a class="nav-link" href="<?= base_url("member/disconnection") ?>">Déconnexion</a></li>
 					<?php } ?>

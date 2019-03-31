@@ -101,4 +101,17 @@ class Member extends CI_Controller
 		$this->member_model->delete_member($id_member);
 		echo json_encode("done");
 	}
+
+	public function service()
+	{
+		if (get_cookie('mode') != 1) {
+			redirect(base_url());
+		}
+		$id_service = $this->input->post('id_service');
+		$service = array(
+			'service' => $this->input->post('service')
+		);
+		$this->member_model->update_service($id_service, $service);
+		redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	}
 }

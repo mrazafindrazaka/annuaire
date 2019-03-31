@@ -37,4 +37,10 @@ class Member_model extends CI_Model
 		$this->db->where('id', $id_member);
 		$this->db->delete('information');
 	}
+
+	public function update_service($id_service, $service)
+	{
+		$this->db->where('id', $id_service);
+		$this->db->update('service', $service);
+	}
 }
