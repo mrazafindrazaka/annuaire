@@ -23,9 +23,9 @@ class Home_model extends CI_Model
 		$this->db->select('*, information.id AS id_member');
 		$this->db->from('information');
 		$this->db->join('service', 'information.id_service = service.id');
-		$this->db->where('MATCH (prenom, nom, autre) AGAINST ("*' . $search . '*" IN BOOLEAN MODE)', NULL, FALSE);
-		$this->db->or_where('service.id LIKE BINARY "' . $search . '"');
-		$this->db->or_like('service.service', $search);
+		$this->db->where('MATCH (information.prenom, information.nom, information.autre) AGAINST ("*' . $this->db->escape_like_str($search) . '*" IN BOOLEAN MODE)', NULL, FALSE);
+		$this->db->or_where('MATCH (service.service) AGAINST ("*' . $this->db->escape_like_str($search) . '*" IN BOOLEAN MODE)', NULL, FALSE);
+		$this->db->or_where('service.id LIKE BINARY "' . $this->db->escape_like_str($search) . '"');
 		$query = $this->db->get();
 		return $query->result();
 	}
