@@ -90,7 +90,8 @@ class Member extends CI_Controller
 			'matricule' => $this->input->post('matricule')
 		);
 		$this->member_model->update_member($id_member, $member);
-		redirect($_SERVER['HTTP_REFERER']);
+		$url = base_url('home/search/' . $this->input->post('back_location'));
+		redirect($url);
 	}
 
 	public function delete($id_member)
