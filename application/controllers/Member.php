@@ -65,6 +65,7 @@ class Member extends CI_Controller
 			'bureau' => $this->input->post('bureau'),
 			'sexe' => $this->input->post('sexe'),
 			'mail' => $this->input->post('mail'),
+			'autre' => $this->input->post('autre'),
 			'matricule' => $this->input->post('matricule')
 		);
 		$this->member_model->insert_member($member);
@@ -87,6 +88,7 @@ class Member extends CI_Controller
 			'bureau' => $this->input->post('bureau'),
 			'sexe' => $this->input->post('sexe'),
 			'mail' => $this->input->post('mail'),
+			'autre' => $this->input->post('autre'),
 			'matricule' => $this->input->post('matricule')
 		);
 		$this->member_model->update_member($id_member, $member);
