@@ -8,7 +8,7 @@
 			let info_member = [];
 			let search = "";
 			<?php if (isset($search)) { ?>
-				search = <?= $search ?>;
+				search = "<?= $search ?>";
 			<?php } ?>
 		</script>
 		<?php if (isset($members) && count($members) > 0) {
