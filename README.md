@@ -11,9 +11,9 @@ via PHPmyadmin - Importer le fichier assets/sql/annuaire.sql (création de la ba
 
 Configuration du projet:
 
-1. Copier le fichier application/config/config-exemple.php en application/config/config.php
+1. Copier le fichier application/config/config-exemple.php et coller en application/config/config.php
 
-2. Copier le fichier application/config/database-exemple.php en application/config/database.php
+2. Copier le fichier application/config/database-exemple.php et coller en application/config/database.php
 
 3. Dans le fichier application/config/config.php changer l'url de base par votre nom de domaine
    
