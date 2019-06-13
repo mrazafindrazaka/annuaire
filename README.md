@@ -1,13 +1,10 @@
-# annuaire
-Annuaire pour le centre d'appel de la mairie de Nancy
+# Annuaire pour le centre d'appel de la mairie de Nancy
 
-
+Projet testé avec PHP 7.2.19
 
 Importation de la base de données:
 
-via PHPmyadmin - Importer le fichier assets/sql/annuaire.sql (création de la base de données et ajout des données)
-
-
+- via PHPmyadmin - Importer le fichier assets/sql/annuaire.sql (création de la base de données et ajout des données)
 
 Configuration du projet:
 
@@ -20,3 +17,8 @@ Configuration du projet:
    $config['base_url'] = 'https://votredomaine.fr';
 
 4. Configurer vos informations de la base de données dans le fichier application/config/database.php
+
+Accès à l'administration:
+
+- Utilisateur : centre_appel
+- Mots de passe : ca@dm1n

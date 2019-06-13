@@ -21,7 +21,7 @@
 	<form method="post" action="<?= base_url("member/insert/") ?>">
 		<div class="form-row">
 			<div class="form-group col-lg-6">
-				<label for="service">Service</label>
+				<label for="service">Service *</label>
 				<select id="service" class="form-control" name="id_service">
 					<?php foreach ($services as $service) { ?>
 						<option value="<?= $service->id ?>"><?= $service->service ?></option>
@@ -29,15 +29,15 @@
 				</select>
 			</div>
 			<div class="form-group col-lg-6">
-				<label for="prenom">Prénom</label>
+				<label for="prenom">Prénom *</label>
 				<input type="text" id="prenom" class="form-control" name="prenom" required>
 			</div>
 			<div class="form-group col-lg-6">
-				<label for="nom">Nom</label>
+				<label for="nom">Nom *</label>
 				<input type="text" id="nom" class="form-control" name="nom" required>
 			</div>
 			<div class="form-group col-lg-6">
-				<label for="t_fixe">Téléphone fixe 1</label>
+				<label for="t_fixe">Téléphone fixe 1 *</label>
 				<input type="text" id="t_fixe" class="form-control" name="t_fixe" required>
 			</div>
 			<div class="form-group col-lg-6">
