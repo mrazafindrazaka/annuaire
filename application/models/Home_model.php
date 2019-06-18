@@ -24,9 +24,14 @@ class Home_model extends CI_Model
 		$this->db->from('information');
 		$this->db->join('service', 'information.id_service = service.id');
 		if (!is_numeric($search)) {
-			$search = $this->db->escape('*' . $search . '*');
-			$this->db->where('MATCH (information.prenom, information.nom, information.autre) AGAINST ("' . $this->db->escape($search) . '" IN BOOLEAN MODE)', NULL, FALSE);
-			$this->db->or_where('MATCH (service.service) AGAINST ("' . $this->db->escape($search) . '" IN BOOLEAN MODE)', NULL, FALSE);
+			$spc = $this->db->escape('%' . $search . '%');
+			$match = $this->db->escape('+' . $search . '*');
+			$this->db->where('MATCH (information.prenom, information.nom, information.autre) AGAINST ("' . $match . '" IN BOOLEAN MODE)', NULL, FALSE);
+			$this->db->or_where('MATCH (service.service) AGAINST ("' . $match . '" IN BOOLEAN MODE)', NULL, FALSE);
+			$this->db->or_where('information.prenom LIKE ' . $spc, NULL, FALSE);
+			$this->db->or_where('information.nom LIKE ' . $spc, NULL, FALSE);
+			$this->db->or_where('information.autre LIKE ' . $spc, NULL, FALSE);
+			$this->db->or_where('service.service LIKE ' . $spc, NULL, FALSE);
 			$this->db->order_by('service.service ASC, information.nom ASC');
 		} elseif (is_numeric($search)) {
 			$this->db->where('service.id LIKE BINARY "' . $this->db->escape_str($search) . '"');
