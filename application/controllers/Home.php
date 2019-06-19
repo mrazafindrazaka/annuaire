@@ -24,7 +24,7 @@ class Home extends CI_Controller
 	{
 		$search = $this->input->post('search');
 		if ($search == NULL)
-			$search = $default;
+			$search = urldecode($default);
 		$data['title'] = 'Recherche';
 		$data['search'] = $search;
 		if (empty($search)) {

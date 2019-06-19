@@ -24,6 +24,7 @@ class Member extends CI_Controller
 			if ($user->user == $this->input->post('user') && $user->pass == $this->input->post('pwd')) {
 				set_cookie('user', $user->user, 300000);
 				set_cookie('mode', $user->admin, 300000);
+				set_cookie('id', $user->id, 300000);
 				redirect(base_url(), 'refresh');
 			}
 		}
@@ -92,8 +93,8 @@ class Member extends CI_Controller
 			'matricule' => $this->input->post('matricule')
 		);
 		$this->member_model->update_member($id_member, $member);
-		$url = base_url('home/search/' . $this->input->post('back_location'));
-		redirect($url);
+		$url = base_url('home/search/' . urlencode($this->input->post('back_location')));
+		redirect($url, 'refresh');
 	}
 
 	public function delete($id_member)
@@ -116,5 +117,12 @@ class Member extends CI_Controller
 		);
 		$this->member_model->update_service($id_service, $service);
 		redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	}
+
+	public function admin()
+	{
+		$data['title'] = 'Administration';
+		$this->load->view('templates/header.php', $data);
+		$this->load->view('templates/footer.php', $data);
 	}
 }
