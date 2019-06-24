@@ -42,7 +42,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 						<input class="btn btn-danger input-group-btn" type="submit" value="Rechercher"/>
 					</div>
 				</form>
-				<span class="badge badge-danger">* 1 numéro de téléphone (séparé ou non par des espaces uniquement)</span>
+				<span class="badge badge-danger">* 1 numéro de téléphone (avec ou sans espaces)</span>
 			</div>
 		</div>
 	</div>
