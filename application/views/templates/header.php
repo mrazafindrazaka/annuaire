@@ -20,6 +20,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			</button>
 			<div class="navbar-collapse collapse" id="collapsingNavbar">
 				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="https://wikinancy/" target="_blank">Base de connaissance</a></li>
 					<?php if (get_cookie('user') == NULL) { ?>
 						<li class="nav-item"><a class="nav-link" href="<?= base_url("member/login") ?>">Connexion</a></li>
 					<?php } else { ?>
@@ -37,10 +38,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 					<div class="input-group">
 						<label for="search"></label>
 						<input id="search" class="form-control" type="text" name="search"
-							   placeholder="Rechercher une personne, un service..." <?php if (isset($search) && !empty($search)) { ?>value="<?= $search ?>" <?php } ?>/>
+							   placeholder="Rechercher une personne, une fonction, un service, un numéro*..." <?php if (isset($search) && !empty($search)) { ?>value="<?= $search ?>" <?php } ?>/>
 						<input class="btn btn-danger input-group-btn" type="submit" value="Rechercher"/>
 					</div>
 				</form>
+				<span class="badge badge-danger">* 1 numéro de téléphone (séparé ou non par des espaces uniquement)</span>
 			</div>
 		</div>
 	</div>
