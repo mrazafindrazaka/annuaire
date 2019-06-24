@@ -23,7 +23,7 @@ class Home_model extends CI_Model
 		$this->db->select('*, information.id AS id_member');
 		$this->db->from('information');
 		$this->db->join('service', 'information.id_service = service.id');
-		if (!is_numeric($search)) {
+		if (!is_numeric(str_replace(' ', '', $search))) {
 			$spc = $this->db->escape('%' . $search . '%');
 			$match = $this->db->escape('+' . $search . '*');
 			$this->db->where('MATCH (information.prenom, information.nom, information.autre) AGAINST ("' . $match . '" IN BOOLEAN MODE)', NULL, FALSE);
@@ -33,8 +33,13 @@ class Home_model extends CI_Model
 			$this->db->or_where('information.autre LIKE ' . $spc, NULL, FALSE);
 			$this->db->or_where('service.service LIKE ' . $spc, NULL, FALSE);
 			$this->db->order_by('service.service ASC, information.nom ASC');
-		} elseif (is_numeric($search)) {
+		} elseif (is_numeric(str_replace(' ', '', $search))) {
+			$spc = $this->db->escape_str(str_replace(' ', '', $search));
 			$this->db->where('service.id LIKE BINARY "' . $this->db->escape_str($search) . '"');
+			$this->db->or_where('REPLACE(information.t_fixe, " ", "") LIKE BINARY "' . $spc . '"', NULL, FALSE);
+			$this->db->or_where('REPLACE(information.t_mobile, " ", "") LIKE BINARY "' . $spc . '"', NULL, FALSE);
+			$this->db->or_where('REPLACE(information.t_fixe_2, " ", "") LIKE BINARY "' . $spc . '"', NULL, FALSE);
+			$this->db->order_by('service.service ASC, information.nom ASC');
 		}
 		$query = $this->db->get();
 		return $query->result();
