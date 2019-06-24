@@ -17,8 +17,3 @@ Configuration du projet:
    $config['base_url'] = 'https://votredomaine.fr';
 
 4. Configurer vos informations de la base de données dans le fichier application/config/database.php
-
-Accès à l'administration:
-
-- Utilisateur : centre_appel
-- Mots de passe : ca@dm1n
