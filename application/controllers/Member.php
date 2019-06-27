@@ -57,8 +57,8 @@ class Member extends CI_Controller
 		}
 		$member = array(
 			'id_service' => $this->input->post('id_service'),
-			'prenom' => $this->input->post('prenom'),
-			'nom' => $this->input->post('nom'),
+			'prenom' => mb_strtoupper($this->input->post('prenom')),
+			'nom' => mb_strtoupper($this->input->post('nom')),
 			't_fixe' => $this->input->post('t_fixe'),
 			't_mobile' => $this->input->post('t_mobile'),
 			't_fixe_2' => $this->input->post('t_fixe_2'),
