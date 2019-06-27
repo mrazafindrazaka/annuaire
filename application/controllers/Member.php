@@ -43,7 +43,7 @@ class Member extends CI_Controller
 		if (get_cookie('mode') != 1) {
 			redirect(base_url());
 		}
-		$data['title'] = 'Création';
+		$data['title'] = 'Administration';
 		$data['services'] = $this->member_model->get_all_services();
 		$this->load->view('templates/header.php', $data);
 		$this->load->view('member/create.php', $data);
@@ -80,8 +80,8 @@ class Member extends CI_Controller
 		}
 		$member = array(
 			'id_service' => $this->input->post('id_service'),
-			'prenom' => $this->input->post('prenom'),
-			'nom' => $this->input->post('nom'),
+			'prenom' => mb_strtoupper($this->input->post('prenom')),
+			'nom' => mb_strtoupper($this->input->post('nom')),
 			't_fixe' => $this->input->post('t_fixe'),
 			't_mobile' => $this->input->post('t_mobile'),
 			't_fixe_2' => $this->input->post('t_fixe_2'),
@@ -117,6 +117,18 @@ class Member extends CI_Controller
 		);
 		$this->member_model->update_service($id_service, $service);
 		redirect($_SERVER['HTTP_REFERER'], 'refresh');
+	}
+
+	public function new_service()
+	{
+		if (get_cookie('mode') != 1) {
+			redirect(base_url());
+		}
+		$service = array(
+			'service' => mb_strtoupper($this->input->post('service'))
+		);
+		$this->member_model->insert_service($service);
+		redirect(base_url('member/create'), 'refresh');
 	}
 
 	public function admin()

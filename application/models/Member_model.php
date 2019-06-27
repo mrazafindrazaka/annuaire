@@ -26,6 +26,11 @@ class Member_model extends CI_Model
 		$this->db->insert('information', $member);
 	}
 
+	public function insert_service($service)
+	{
+		$this->db->insert('service', $service);
+	}
+
 	public function update_member($id_member, $member)
 	{
 		$this->db->where('id', $id_member);
